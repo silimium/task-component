@@ -1,0 +1,12 @@
+{
+    "name": "silimium/task-feature",
+    "type": "bundle",
+    "require": {
+        "php": ">=7.2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Silimium\\TaskBundle\\": ""
+        }
+    }
+}
