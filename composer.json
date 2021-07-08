@@ -1,12 +1,11 @@
 {
-    "name": "silimium/task-feature",
-    "type": "bundle",
+    "name": "silimium/task-component",
     "require": {
-        "php": ">=7.2.5"
+        "php": ">=8.0"
     },
     "autoload": {
         "psr-4": {
-            "Silimium\\TaskBundle\\": ""
+            "Silimium\\Task\\": "src/"
         }
     }
 }

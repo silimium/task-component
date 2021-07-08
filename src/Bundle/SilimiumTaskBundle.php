@@ -1,6 +1,6 @@
 <?php
 
-namespace Silimium\TaskBundle;
+namespace Silimium\Task\Bundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
