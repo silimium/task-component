@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace Silimium\Task\Bundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="task_task")
  */
+#[ApiResource]
 class Task
 {
     /**

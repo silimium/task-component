@@ -1,7 +1,9 @@
 {
     "name": "silimium/task-component",
     "require": {
-        "php": ">=8.0"
+        "php": ">=8.0",
+        "symfony/framework-bundle": "5.3.*",
+        "api-platform/core": "^2.6"
     },
     "autoload": {
         "psr-4": {
