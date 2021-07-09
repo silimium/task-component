@@ -5,4 +5,11 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - run: make tests
+      - name: Checkout the current branch
+        uses: actions/checkout@v2
+
+      - name: Build & install dependencies
+        run: make build
+
+      - name: Execute the tests
+        run: make tests

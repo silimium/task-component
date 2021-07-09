@@ -37,6 +37,18 @@ services:
     networks:
       - default
 
+  composer:
+    build:
+      context: .
+      target: composer
+    working_dir: /srv/app
+    volumes:
+      - "../../:/srv/app:rw"
+      - "${COMPOSER_HOME:-~/.composer}:/tmp"
+    user: "${DOCKER_UID:-1000}"
+    restart: "no"
+    scale: 0
+
 networks:
   default: ~
 
