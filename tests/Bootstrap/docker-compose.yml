@@ -7,7 +7,7 @@ services:
       args:
         USER: "${DOCKER_UID:-1000}"
     environment:
-      - APP_ENV=${APP_ENV:-dev}
+      - APP_ENV=${APP_ENV:-test}
     volumes:
       - "../../:/srv/app:rw"
     user: "${DOCKER_UID:-1000}"
