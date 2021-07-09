@@ -1,8 +1,8 @@
 name: run tests
-on: [pull_request]
+on: [push, pull_request]
 
 jobs:
   tests:
     runs-on: ubuntu-latest
-    stesp:
+    steps:
       - run: make tests
