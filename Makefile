@@ -9,6 +9,7 @@ export DOCKER_UID
 .PHONY: build
 build:
 	$(DOCKER_COMPOSE) build
+	$(DOCKER_COMPOSE) pull
 	$(COMPOSER) install \
 		--ansi \
 		--no-scripts \
