@@ -35,4 +35,9 @@ class Kernel extends BaseKernel
     {
         return __DIR__ . '/var/cache/'.$this->environment;
     }
+
+    public function getLogDir()
+    {
+        return __DIR__ . '/var/log';
+    }
 }
