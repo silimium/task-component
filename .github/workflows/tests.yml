@@ -18,6 +18,14 @@ jobs:
       - name: Build docker images
         run: make build
 
+      - name: Set up composer cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
       - name: Install dependencies
         run: make dependencies
 
