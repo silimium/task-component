@@ -1,0 +1,86 @@
+# see https://symfony.com/doc/current/reference/configuration/framework.html
+framework:
+  test: true
+  secret: '%env(APP_SECRET)%'
+  #csrf_protection: true
+  http_method_override: false
+
+  # Enables session support. Note that the session will ONLY be started if you read or write from it.
+  # Remove or comment this section to explicitly disable session support.
+  session:
+    handler_id: null
+    cookie_secure: auto
+    cookie_samesite: lax
+    storage_factory_id: session.storage.factory.mock_file
+
+  #esi: true
+  #fragments: true
+  php_errors:
+    log: true
+
+  router:
+    utf8: true
+
+  validation:
+    email_validation_mode: html5
+
+security:
+  # https://symfony.com/doc/current/security/experimental_authenticators.html
+  enable_authenticator_manager: true
+  # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+  providers:
+    users_in_memory: { memory: null }
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    main:
+      lazy: true
+      provider: users_in_memory
+
+      # activate different ways to authenticate
+      # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+      # https://symfony.com/doc/current/security/impersonating_user.html
+      # switch_user: true
+
+  # Easy way to control access for large sections of your site
+  # Note: Only the *first* access control that matches will be used
+  access_control:
+  # - { path: ^/admin, roles: ROLE_ADMIN }
+  # - { path: ^/profile, roles: ROLE_USER }
+
+doctrine:
+  dbal:
+    url: 'postgresql://docker:docker@postgresql:5432/docker?serverVersion=13&charset=utf8'
+
+    # IMPORTANT: You MUST configure your server version,
+    # either here or in the DATABASE_URL env var (see .env file)
+    #server_version: '13'
+  orm:
+    auto_generate_proxy_classes: true
+    naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+    auto_mapping: true
+
+api_platform:
+  mapping: ~
+#    paths: [ '%kernel.project_dir%/src/Entity' ]
+  patch_formats:
+    json: [ 'application/merge-patch+json' ]
+  swagger:
+    versions: [ 3 ]
+
+nelmio_cors:
+  defaults:
+    origin_regex: true
+    allow_origin: [ '^https?://(localhost|127\.0\.0\.1)(:[0-9]+)?$' ]
+    allow_methods: [ 'GET', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE' ]
+    allow_headers: [ 'Content-Type', 'Authorization' ]
+    expose_headers: [ 'Link' ]
+    max_age: 3600
+  paths:
+    '^/': null
+
+twig:
+  default_path: '%kernel.project_dir%/templates'
+  strict_variables: true
